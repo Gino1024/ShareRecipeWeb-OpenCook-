@@ -1,0 +1,20 @@
+{%extends 'default/base.html'%}
+{%block content%}
+            <div class="container main-container">
+            <h1 class="h3 mb-3 font-weight-normal">分享食譜</h1>
+          <form method="POST" action="/recipes/post">
+            <label >請輸入食譜名稱</label>
+            <input type="text" name='title' class="form-control inputcontainer" placeholder="title" required autofocus>
+            <label >請輸入圖片路徑</label>
+            <input type="text" name='image_path' class="form-control inputcontainer" placeholder="image_path" required autofocus>
+            <label >描述</label>
+            <textarea type="text" name="description" class="form-control inputcontainer" placeholder="description" required>
+            </textarea>
+            <br></br>
+              {% csrf_token %}
+            <button class="btn btn-lg btn-primary btn-block " type="submit">送出</button>
+          </form>
+            <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+            </div>
+
+{%endblock%}

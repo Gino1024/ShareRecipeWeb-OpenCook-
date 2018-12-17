@@ -1,0 +1,26 @@
+{%extends 'default/base.html'%}
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Recipe</title>
+
+
+</head>
+<body>
+    <div class="container main-container">
+        <ol class="breadcrumb">
+                <li><a href="/">Home /</a></li>
+                <li class="active">&nbsp;{{recipe.title}}</li>
+              </ol>
+
+    <div>
+        <h4>{{recipe.title}}</h4>
+        <P ><img class="img-thumbnail" height="240" width="240" src="{{recipe.image_path}}"></P>
+        <p>{{recipe.description}}</p>
+    </div>
+    </div>
+</body>
+</html>
+{%endblock%}

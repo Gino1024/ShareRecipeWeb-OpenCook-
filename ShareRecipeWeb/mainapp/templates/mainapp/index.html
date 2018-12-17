@@ -1,0 +1,44 @@
+{%extends 'default/base.html'%}
+{%block content%}
+<div class="jumbotron">
+  {%for message in messages%}
+  <div class="alert alert-success" role="alert">{{message}}</div>
+  {%endfor%}
+    <div class="container">
+
+<br><br><br><br>
+      <h1 class="display-3">分享料理的美好時刻</h1>
+      <p>在這裡你可以分享給你的好友們</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">更多</a> &raquo;</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+    <div id = "result" class="row">
+
+    </div>
+    </div> 
+   
+  </div> <!-- /container -->
+  
+  <script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+
+    var onloadHandle = function(){
+      var data = JSON.parse(JSON.parse(xhr.responseText).data);
+      var result = document.getElementById('result');
+      var strHTML = '';
+      console.log(data);
+      data.forEach(function(value){
+         strHTML += '<div class="col-md-4"><h4>' + value.fields.title + '</h4><a href="recipes/'+value.pk+'">' + '<img class="img-thumbnail" src="'+ value.fields.image_path + '">' + '</a>'+Date(value.fields.crated_at)+'</div>'
+      })
+      result.innerHTML = strHTML; 
+    };
+
+  
+    xhr.open('GET','http://localhost:8000/api/recipes',true)
+    xhr.send();
+    xhr.onload = onloadHandle;
+    </script>
+{%endblock%}

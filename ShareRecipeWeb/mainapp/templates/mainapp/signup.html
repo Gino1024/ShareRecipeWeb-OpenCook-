@@ -1,0 +1,18 @@
+{%extends 'default/base.html'%}
+{%block content%}
+            <div class="container main-container">
+            <h1 class="h3 mb-3 font-weight-normal">註冊</h1>
+          <form method="POST" action="/signup/post">
+            <label for="inputUserName" class="sr-only inputcontainer">UserName</label>
+            <input type="text" name='username' class="form-control inputcontainer" placeholder="UserName" required autofocus>
+            <label for="inputEmail" class="sr-only inputcontainer">Email address</label>
+            <input type="email" name='email' class="form-control inputcontainer" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only inputcontainer">Password</label>
+            <input type="password" name="password" class="form-control inputcontainer" placeholder="Password" required>
+            {% csrf_token %}
+            <button class="btn btn-lg btn-primary btn-block " type="submit">Sign in</button>
+          </form>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+            </div>
+
+{%endblock%}
